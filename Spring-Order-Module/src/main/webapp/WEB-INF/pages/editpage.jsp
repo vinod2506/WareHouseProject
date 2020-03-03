@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@include file="menu.jsp" %>
+<%@include file="usermenu.jsp" %>
 	<h1 style="text-align: center; color: blue;">WELCOME TO Order Type Edit PAGE</h1>
 
 	<form:form method="post" action="update" modelAttribute="orderType">

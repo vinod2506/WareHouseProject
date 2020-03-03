@@ -8,11 +8,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@include file="menu.jsp" %>
+<%@include file="usermenu.jsp" %>
 
 	<h1>All Placed Order</h1>
 	<h3><a href="${root }/order/excel">Export excel</a></h3>
 	<h3><a href="${root }/order/pdf">Export Pdf</a></h3>
+	<img src="../resources/images/OrderPie.jpg">
+	<img src="../resources/images/OrderBar.jpg">
 	<c:choose>
 		<c:when test="${!empty listorder }">
 			<table border="1">

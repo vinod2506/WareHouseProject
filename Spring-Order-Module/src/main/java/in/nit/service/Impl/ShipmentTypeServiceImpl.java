@@ -50,6 +50,13 @@ public class ShipmentTypeServiceImpl implements IShipmentTypeService{
 	List<ShipmentType>sort=	list.stream().sorted((o1,o2)->o1.getSid()-o2.getSid()).collect(Collectors.toList());
 		return sort;
 	}
+
+	@Override
+	@Transactional
+	public List<Object[]> getShipModeCount() {
+
+		return dao.getShipmentModeCount();
+	}
 	
 	
 

@@ -33,7 +33,7 @@ Select Doc : <input type="file" name="fileOb">
 				<td>${ob[0]}</td>
 				<td>${ob[1]}</td>
 				<td>
-				<a href="download?fid=${ob[0]}">Download</a>
+				<a href="download?fid=${ob[0]}"><img src="./resources/images/down.png" width="120" height="60" ></a>
 				</td>
 				</tr>
 				

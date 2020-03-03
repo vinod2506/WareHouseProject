@@ -20,6 +20,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
@@ -27,7 +29,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableTransactionManagement
 @PropertySource("classpath:application.properties")
 @ComponentScan("in.nit")
-public class AppConfig {
+public class AppConfig implements WebMvcConfigurer{
 	@Autowired
 	private Environment env;
 
@@ -104,6 +106,13 @@ public class AppConfig {
 
 	public AppConfig() {
 		System.out.println("Appconfig loaded"); // TODO Auto-generated constructor stub
+	}
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		System.out.println("AppConfig.addResourceHandlers()");
+		registry.addResourceHandler("resources/**")
+		.addResourceLocations("/resources/");
+		
 	}
 	
 	

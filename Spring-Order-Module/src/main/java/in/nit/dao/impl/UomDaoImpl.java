@@ -16,34 +16,40 @@ public class UomDaoImpl implements IUomDao{
 	private HibernateTemplate ht;
 	
 	@Override
-	public Integer saveShipment(UomType ship) {
+	public Integer saveUomType(UomType ship) {
 
 		
 		return (Integer)ht.save(ship);
 	}
 
 	@Override
-	public void updateShipmentType(UomType ship) {
-		// TODO Auto-generated method stub
+	public void updateUomType(UomType ship) {
+		ht.update(ship);
 		
 	}
 
 	@Override
-	public void deleteShipmentType(UomType id) {
-		// TODO Auto-generated method stub
+	public void deleteUomType(Integer id) {
+		ht.delete(new UomType(id));
 		
 	}
 
 	@Override
-	public UomType getOneShipmentType(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+	public UomType getOneUomType(Integer id) {
+		
+		return ht.get(UomType.class, id);
 	}
 
 	@Override
-	public List<UomType> getAllShipmentType() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<UomType> getAllUomType() {
+		
+		return ht.loadAll(UomType.class);
+	}
+
+	@Override
+	public boolean isUomExist(Integer id) {
+		
+		return ht.contains(new UomType(id));
 	}
 	
 	

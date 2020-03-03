@@ -11,4 +11,6 @@ public interface IOrderService {
 	void updateOrder(OrderType o);
 	OrderType fetchOneOrder(Integer id);
 	List<OrderType> fetchAllOrder();
+	
+	List<Object[]> getOrderMethodCount();
 }

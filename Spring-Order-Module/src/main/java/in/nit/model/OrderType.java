@@ -38,7 +38,9 @@ public class OrderType {
 	}
 
 	private String odrMode;
+	
 	private String odrCode;
+	
 	@Column(name="methods")
 	private String odrMethod;
 	@ElementCollection(fetch = FetchType.EAGER)
@@ -46,7 +48,6 @@ public class OrderType {
 	@OrderColumn(name="pos")
 	@Column(name="OrderAccept")
 	private List<String> odrAccept; 
-
 	private String odrDescp;
 	
 }

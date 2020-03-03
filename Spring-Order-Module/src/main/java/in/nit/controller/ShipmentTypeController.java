@@ -3,6 +3,8 @@ package in.nit.controller;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,10 +18,15 @@ import in.nit.exel.ShipmentTypeExcelView;
 import in.nit.model.ShipmentType;
 import in.nit.pdf.ShipmentTypePdf;
 import in.nit.service.IShipmentTypeService;
+import in.nit.utils.ShipmentChartsUtils;
 
 @Controller
 @RequestMapping("/shipment")
 public class ShipmentTypeController {
+	@Autowired
+	ShipmentChartsUtils util;
+	@Autowired
+	ServletContext context;
 
 	@Autowired
 	IShipmentTypeService service;
@@ -66,12 +73,13 @@ public class ShipmentTypeController {
 	 * This method is used to
 	 * view all shipment records
 	 */
-	@RequestMapping("all")
+	@RequestMapping("/all")
 	public String viewShipment(Model m) {
 		List<ShipmentType> ship=service.getAllShipmentType();
 		m.addAttribute("list", ship);
 		m.addAttribute("msg", "All Shipment Page");
 		m.addAttribute("all",true);
+		//showPieChart();
 		return "home";
 	}
 	/**
@@ -128,6 +136,18 @@ public class ShipmentTypeController {
 		m.addObject("list",service.getAllShipmentType());
 		}
 		return m;
+	}
+	@RequestMapping("/chart")
+	public String showPieChart() {
+		List<Object[]>list=service.getShipModeCount();
+		System.out.println("from pie chart "+list);
+		String path=context.getRealPath("/");
+		System.out.println("Path :"+path);
+		util.generatePie(path, list);
+		util.generateBarChart(path, list);
+		return "shipmentcharts";
+		
+		
 	}
 	
 }

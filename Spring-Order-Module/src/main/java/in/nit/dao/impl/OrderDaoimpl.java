@@ -41,4 +41,11 @@ public class OrderDaoimpl implements IOrderDao{
 
 		return ht.loadAll(OrderType.class);
 	}
+	@SuppressWarnings({ "deprecation", "unchecked" })
+	@Override
+	public List<Object[]> getOrderMethodCount() {
+		String hql="select odrMethod ,count(odrMethod) from in.nit.model.OrderType group by odrMethod";
+		
+		return (List<Object[]>) ht.find(hql);
+	}
 }

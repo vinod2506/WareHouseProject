@@ -7,9 +7,11 @@ import in.nit.model.UomType;
 
 public interface IUomDao {
 
-	Integer saveShipment(UomType ship);
-	void updateShipmentType(UomType ship);
-	void deleteShipmentType(UomType id);
-	UomType getOneShipmentType(Integer id);
-	List<UomType> getAllShipmentType();
+	Integer saveUomType(UomType ship);
+	void updateUomType(UomType ship);
+	void deleteUomType(Integer id);
+	UomType getOneUomType(Integer id);
+	List<UomType> getAllUomType();
+	
+	boolean isUomExist(Integer id);
 }

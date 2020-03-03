@@ -43,5 +43,10 @@ public class OrderServiceImpl implements IOrderService{
 
 		return dao.fetchAllOrder();
 	}
+	@Override
+	public List<Object[]> getOrderMethodCount() {
+		
+		return dao.getOrderMethodCount();
+	}
 
 }

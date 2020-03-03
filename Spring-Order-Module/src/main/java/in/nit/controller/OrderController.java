@@ -2,7 +2,10 @@ package in.nit.controller;
 
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.OrderUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,6 +20,7 @@ import in.nit.model.ShipmentType;
 import in.nit.pdf.OrederTypePdfView;
 import in.nit.pdf.ShipmentTypePdf;
 import in.nit.service.IOrderService;
+import in.nit.utils.OrderChartUtils;
 
 @Controller
 @RequestMapping("order")
@@ -24,18 +28,22 @@ public class OrderController {
 
 	@Autowired
 	private IOrderService service;
+	@Autowired
+	private ServletContext context;
+	@Autowired
+	private OrderChartUtils util;
 
 	/**
 	 * this method show home page
 	 * (Url: /register method: show page
 	 * @param model 
-	 * @return orderpage.jsp
+	 * @return orderregister.jsp
 	 */
 	@RequestMapping("register")
 	public String showPage(Model model) {
 		System.out.println("OrderController.showPage()");
 		model.addAttribute("orderType", new OrderType());
-		return "orderpage";
+		return "orderregister";
 	}
 	@RequestMapping(value="/save",method = RequestMethod.POST)
 	public String saveOrder(@ModelAttribute OrderType ord ,Model m) {
@@ -45,13 +53,14 @@ public class OrderController {
 				.append(" is Saved").toString();
 		m.addAttribute("clickSave", true);
 		m.addAttribute("msg", msg);
-		return "orderpage";
+		return "orderregister";
 	}
 	@RequestMapping("/all")
 	public String showAll(Model m) {
 		List<OrderType>list=service.fetchAllOrder();
 		m.addAttribute("clickAll", true);
 		m.addAttribute("listorder", list);
+		showCharts();
 		return "result";
 	}
 	@RequestMapping("/delete")
@@ -114,5 +123,14 @@ public class OrderController {
 		m.addObject("list", service.fetchAllOrder());
 		}
 		return m ;
+	}
+	@RequestMapping("/chart")
+	public String showCharts() {
+		List<Object[]>list=service.getOrderMethodCount();
+		String path=context.getRealPath("/");
+		util.generatePie(path, list);
+		util.generateBarChart(path, list);
+		return "result";
+		
 	}
 }

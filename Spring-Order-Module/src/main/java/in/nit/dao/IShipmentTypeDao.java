@@ -13,5 +13,6 @@ public interface IShipmentTypeDao {
 	List<ShipmentType> getAllShipmentType();
 	
 
+	List<Object[]> getShipmentModeCount();
 
 }
