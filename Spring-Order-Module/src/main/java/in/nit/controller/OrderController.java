@@ -45,7 +45,7 @@ public class OrderController {
 		model.addAttribute("orderType", new OrderType());
 		return "orderregister";
 	}
-	@RequestMapping(value="/save",method = RequestMethod.POST)
+	@RequestMapping(value="/save")
 	public String saveOrder(@ModelAttribute OrderType ord ,Model m) {
 		System.out.println("OrderController.saveOrder()");
 		Integer id=service.saveOrder(ord);
@@ -61,15 +61,17 @@ public class OrderController {
 		m.addAttribute("clickAll", true);
 		m.addAttribute("listorder", list);
 		showCharts();
-		return "result";
+		return "allorder";
 	}
 	@RequestMapping("/delete")
 	public String delete(@RequestParam Integer oid,Model model) {
 
 		service.deleteOrder(oid);
 		model.addAttribute("msg", "Order Deleted");
+		List<OrderType>list=service.fetchAllOrder();
+		model.addAttribute("listorder", list);
 		model.addAttribute("clickDlete", true);
-		return "redirect:all";
+		return "allorder";
 	}
 
 	/***
@@ -92,7 +94,7 @@ public class OrderController {
 		OrderType order=service.fetchOneOrder(id);
 		m.addAttribute("orderType", order);
 
-		return "editpage";
+		return "editorder";
 	}
 
 	@RequestMapping("/update")
@@ -100,7 +102,7 @@ public class OrderController {
 		service.updateOrder(or);
 		m.addAttribute("msg", "Record Updated");
 
-		return "editpage";
+		return "editorder";
 	}
 
 	@RequestMapping("/excel")
@@ -130,7 +132,7 @@ public class OrderController {
 		String path=context.getRealPath("/");
 		util.generatePie(path, list);
 		util.generateBarChart(path, list);
-		return "result";
+		return "ordercharts";
 		
 	}
 }

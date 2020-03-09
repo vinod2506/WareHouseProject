@@ -3,6 +3,7 @@ package in.nit.service.Impl;
 import java.util.List;
 
 import javax.transaction.Transactional;
+import javax.transaction.Transactional.TxType;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,5 +53,18 @@ public class UomServiceImpl implements IUomService {
 	public boolean isUomExist(Integer id) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	@Override
+	public List<Object[]> getUomCout() {
+		
+		return dao.getUomCount();
+	}
+	
+	@Override
+     @Transactional
+	public List<Object[]> getUomIdAndModel() {
+		
+		return dao.getUomIdAndModel();
 	}
 }

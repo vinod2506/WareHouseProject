@@ -14,4 +14,7 @@ public interface IUomDao {
 	List<UomType> getAllUomType();
 	
 	boolean isUomExist(Integer id);
+	List<Object[]> getUomIdAndModel();
+	
+	List<Object[]> getUomCount();
 }

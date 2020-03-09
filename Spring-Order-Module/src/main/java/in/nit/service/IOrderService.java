@@ -13,4 +13,6 @@ public interface IOrderService {
 	List<OrderType> fetchAllOrder();
 	
 	List<Object[]> getOrderMethodCount();
+	
+	List<Object[]> getOrderIdOrderMode(String mode);
 }

@@ -48,5 +48,11 @@ public class OrderServiceImpl implements IOrderService{
 		
 		return dao.getOrderMethodCount();
 	}
+	
+	@Override
+	public List<Object[]> getOrderIdOrderMode(String mode) {
+		
+		return dao.getOrderIdMode(mode);
+	}
 
 }

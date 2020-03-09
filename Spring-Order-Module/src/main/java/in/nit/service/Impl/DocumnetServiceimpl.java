@@ -9,8 +9,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import in.nit.dao.service.IDocumentService;
 import in.nit.model.DocumentData;
+import in.nit.service.IDocumentService;
 @Service
 public class DocumnetServiceimpl implements IDocumentService {
 

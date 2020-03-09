@@ -12,4 +12,7 @@ public interface IUomService {
 	UomType getOneUom(Integer id);
 	List<UomType> getAllUom();
 	boolean isUomExist(Integer id);
+	
+	List<Object[]> getUomCout();
+	List<Object[]> getUomIdAndModel();
 }

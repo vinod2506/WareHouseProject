@@ -52,5 +52,19 @@ public class UomDaoImpl implements IUomDao{
 		return ht.contains(new UomType(id));
 	}
 	
+	@SuppressWarnings({ "deprecation", "unchecked" })
+	@Override
+	public List<Object[]> getUomCount() {
+		String hql="select uomType,count(uomType) from in.nit.model.UomType group by uomType";
+		return (List<Object[]>) ht.find(hql);
+	}
+	
+	@Override
+	public List<Object[]> getUomIdAndModel() {
+		
+		String hql="select uomId,uomModel from in.nit.model.UomType";
+		return (List<Object[]>) ht.find(hql);
+	}
+	
 	
 }

@@ -1,4 +1,4 @@
-package in.nit.dao.service;
+package in.nit.service;
 
 import java.util.List;
 

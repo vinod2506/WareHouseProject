@@ -48,4 +48,11 @@ public class OrderDaoimpl implements IOrderDao{
 		
 		return (List<Object[]>) ht.find(hql);
 	}
+	
+	@SuppressWarnings({ "unchecked", "deprecation" })
+	@Override
+	public List<Object[]> getOrderIdMode(String mode) {
+		String hql=" select oid,odrMode from in.nit.model.OrderType where odrMode=?0 ";
+		return (List<Object[]>) ht.find(hql,mode);
+	}
 }

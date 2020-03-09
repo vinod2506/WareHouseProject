@@ -26,14 +26,14 @@
 	</div>
 	<form:form action="save" method="post" modelAttribute="uomType">
 		<pre>
-Enter Order Type      :  <form:select path="uomType">
+Enter Uom Type      :  <form:select path="uomType">
                             <form:option value="">--Select--</form:option>
                             <form:option value="Packing">Packing</form:option>
                             <form:option value="No Packing">No Packing</form:option>
                             <form:option value="NA">-NA-</form:option>
                          </form:select>
-Enter Order Model    :  <form:input path="uomModel" /> 
-Enter Order Desc      :  <form:input path="uomDesc" />
+Enter Uom Model    :  <form:input path="uomModel" /> 
+Enter Uom Desc      :  <form:input path="uomDesc" />
 <input type="submit" value="Create Uom">
 </pre>
 

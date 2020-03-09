@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
-import in.nit.dao.service.IDocumentService;
 import in.nit.model.DocumentData;
+import in.nit.service.IDocumentService;
 
 @Controller
 public class DocumnetDataController {

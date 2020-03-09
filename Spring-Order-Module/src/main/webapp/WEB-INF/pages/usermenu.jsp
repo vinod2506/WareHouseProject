@@ -48,6 +48,34 @@
       </li>
      <!-- end -->
      
+     <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          UomType
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="${root}/uom/register">Register</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="${root}/uom/all">View All</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="${root}/uom/chart">Charts</a>
+        </div>
+      </li>
+     <!-- end -->
+     
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Part
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="${root}/part/register">Register</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="${root}/part/all">View All</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="${root}/part/chart">Charts</a>
+        </div>
+      </li>
+     <!-- end -->
+     
 
      
     </ul>
